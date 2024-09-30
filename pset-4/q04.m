@@ -50,24 +50,25 @@ u = zeros(2, length(t));
 
 % Plotting the perturbed initial conditions
 figure; 
-    sgtitle("Closed loop simulation for various initial conditions")
-    subplot(2, 1, 1); hold on;
-    grid on;
-    title("\phi_1")
-    ylabel("Amplitude")
-    xlabel("t [s]")
-    plot(t, yout1(:,1), "LineWidth", 1.5)
-    plot(t, yout2(:,1), "LineWidth", 1.5)
-    plot(t, yout3(:,1), "LineWidth", 1.5)
-    subplot(2, 1, 2); hold on;
-    grid on;
-    title("\phi_2")
-    ylabel("Amplitude")
-    xlabel("t [s]")
-    plot(t, yout1(:,2), "LineWidth", 1.5)
-    plot(t, yout2(:,2), "LineWidth", 1.5)
-    plot(t, yout3(:,2), "LineWidth", 1.5)
-    legend("x0 = [1, 0, 1, 0]", "x0 = [0, 1, 0, 1]", "x0 = [1, 1, 1, 1]")
+sgtitle("Closed loop simulation for various initial conditions")
+subplot(2, 1, 1); hold on;
+grid on;
+title("\phi_1")
+ylabel("Amplitude")
+xlabel("t [s]")
+plot(t, yout1(:,1), "LineWidth", 1.5)
+plot(t, yout2(:,1), "LineWidth", 1.5)
+plot(t, yout3(:,1), "LineWidth", 1.5)
+subplot(2, 1, 2); hold on;
+grid on;
+title("\phi_2")
+ylabel("Amplitude")
+xlabel("t [s]")
+plot(t, yout1(:,2), "LineWidth", 1.5)
+plot(t, yout2(:,2), "LineWidth", 1.5)
+plot(t, yout3(:,2), "LineWidth", 1.5)
+legend("x0 = [1, 0, 1, 0]", "x0 = [0, 1, 0, 1]", "x0 = [1, 1, 1, 1]")
+saveas(gcf, "./simulation-initial-conditions.png");
 
 % Simulate for a disturbance step on the torque of rotor 2
 x0 = [0, 0, 0, 0];
@@ -77,19 +78,20 @@ u(2, :) = 1;
 
 % Plotting the disturbance step
 figure; 
-    sgtitle("Closed loop simulation for a step input on the system torque Td")
-    subplot(2, 1, 1); hold on;
-    grid on;
-    title("\phi_1")
-    ylabel("Amplitude")
-    xlabel("t [s]")
-    plot(t, yout4(:,1), "LineWidth", 1.5)
-    subplot(2, 1, 2); hold on;
-    grid on;
-    title("\phi_2")
-    ylabel("Amplitude")
-    xlabel("t [s]")
-    plot(t, yout4(:,2), "LineWidth", 1.5)
+sgtitle("Closed loop simulation for a step input on the system torque Td")
+subplot(2, 1, 1); hold on;
+grid on;
+title("\phi_1")
+ylabel("Amplitude")
+xlabel("t [s]")
+plot(t, yout4(:,1), "LineWidth", 1.5)
+subplot(2, 1, 2); hold on;
+grid on;
+title("\phi_2")
+ylabel("Amplitude")
+xlabel("t [s]")
+plot(t, yout4(:,2), "LineWidth", 1.5)
+saveas(gcf, "./simulation-disturbance-step.png");
 
 % Computing the DCgain matrix for the torque input
 gain_matrix = dcgain(sys);
